@@ -1,0 +1,61 @@
+CREATE DATABASE blogi;
+
+
+USE blogi;
+
+
+
+CREATE TABLE kayttaja(
+	
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	
+	sukunimi VARCHAR(50) NOT NULL,
+	
+	etunimi VARCHAR(50) NOT NULL,
+	
+	tunnus VARCHAR(50) NOT NULL,
+	
+	salasana VARCHAR(255) NOT NULL,
+	
+	email VARCHAR(100) NOT NULL
+
+);
+
+
+
+CREATE TABLE kirjoitus(
+	
+	kirjoitus_id INT PRIMARY KEY AUTO_INCREMENT,
+	
+	otsikko VARCHAR(50) NOT NULL,
+	teksti TEXT NOT NULL,
+
+
+	kayttaja_id INT NOT NULL,
+
+	FOREIGN KEY (kayttaja_id) REFERENCES kayttaja(id) ON DELETE RESTRICT,
+
+
+	paivays TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE kommentti(
+
+	kommentti_id INT PRIMARY KEY AUTO_INCREMENT,
+
+	teksti TEXT NOT NULL,
+	paivays TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+
+	kirjoitus_id INT NOT NULL,
+
+	FOREIGN KEY (kirjoitus_id) REFERENCES kirjoitus(kirjoitus_id) ON DELETE RESTRICT,
+
+
+	kayttaja_id INT NOT NULL,
+
+	FOREIGN KEY (kayttaja_id) REFERENCES kayttaja(id) ON DELETE RESTRICT
+
+);

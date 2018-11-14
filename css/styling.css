@@ -1,0 +1,21 @@
+body{
+    padding: 0px;
+}
+
+article{
+    margin: 7.5% 5%;
+    
+}
+
+.kirjoitus{
+    border: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 1em;
+}
+
+.kommentti{
+    border: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 1em;
+    background: #fff5e6;
+}
